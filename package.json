@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "axios": "^0.21.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "puppeteer": "^10.2.0",
+    "puppeteer-screen-recorder": "^1.1.11"
+  }
+}
