@@ -33,7 +33,7 @@ function postDataToSheet() {
 (async () => {
   for (let u = 0; u < destinationsCodes.length; u++) {
     try {
-      const browser = await puppeteer.launch();
+      const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
       const page = await browser.newPage();
       /*
       const recorder = new PuppeteerScreenRecorder(page);
