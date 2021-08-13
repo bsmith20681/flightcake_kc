@@ -3,14 +3,12 @@
     "axios": "^0.21.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
-    "puppeteer": "^10.2.0",
-    "puppeteer-screen-recorder": "^1.1.11"
+    "puppeteer": "^2.1.0"
   },
   "name": "flightcake_kc",
   "description": "",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
