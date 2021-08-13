@@ -1,5 +1,4 @@
 const puppeteer = require("puppeteer");
-const { PuppeteerScreenRecorder } = require("puppeteer-screen-recorder");
 const moment = require("moment");
 const _ = require("lodash");
 const axios = require("axios");
@@ -35,10 +34,7 @@ function postDataToSheet() {
     try {
       const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
       const page = await browser.newPage();
-      /*
-      const recorder = new PuppeteerScreenRecorder(page);
-      await recorder.start(`simple-${destinationsCodes[u]}.mp4`);
-      */
+
       await page.goto("https://www.google.com/travel/flights");
       await page.setViewport({ width: 1920, height: 969 });
 
@@ -114,7 +110,6 @@ function postDataToSheet() {
       masterData.push(cheapestFlight[0]);
 
       console.log(masterData);
-      //await recorder.stop();
       await browser.close();
 
       if (u === 15) {
