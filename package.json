@@ -5,5 +5,25 @@
     "moment": "^2.29.1",
     "puppeteer": "^10.2.0",
     "puppeteer-screen-recorder": "^1.1.11"
-  }
+  },
+  "name": "flightcake_kc",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bsmith20681/flightcake_kc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bsmith20681/flightcake_kc/issues"
+  },
+  "homepage": "https://github.com/bsmith20681/flightcake_kc#readme"
 }
