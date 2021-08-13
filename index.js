@@ -3,7 +3,7 @@ const moment = require("moment");
 const _ = require("lodash");
 const axios = require("axios");
 const destinationsCodes = require("./destination.json");
-const cron = require("node-cron");
+//const cron = require("node-cron");
 
 const thisTuesday = moment()
   .startOf("isoWeek")
