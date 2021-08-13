@@ -52,7 +52,7 @@ function postDataToSheet() {
         ".e5F5td:nth-child(1) > .zX8lIf > .v0tSxb > .dvO2xc > div > .V00Bye > .II2One"
       );
 
-      await page.click("input[value=Provo]");
+      await page.click("input.II2One.j0Ppje.zmMKJ.LbIaRd");
 
       await page.keyboard.sendCharacter("mci");
 
