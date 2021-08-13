@@ -3,13 +3,7 @@ const moment = require("moment");
 const _ = require("lodash");
 const axios = require("axios");
 const destinationsCodes = require("./destination.json");
-
-/*
 const cron = require("node-cron");
-cron.schedule("* * * * *", function () {
-  console.log("scheduler is running");
-});
-*/
 
 const thisTuesday = moment()
   .startOf("isoWeek")
@@ -36,19 +30,11 @@ function postDataToSheet() {
     });
 }
 
-(async () => {
+const fetchFlights = async () => {
   for (let u = 0; u < destinationsCodes.length; u++) {
     try {
       const browser = await puppeteer.launch({
-        args: [
-          "--disable-gpu",
-          "--disable-dev-shm-usage",
-          "--disable-setuid-sandbox",
-          "--no-first-run",
-          "--no-sandbox",
-          "--no-zygote",
-          "--single-process",
-        ],
+        args: ["--no-sandbox", "--disabled-setupid-sandbox"],
       });
       const page = await browser.newPage();
 
@@ -137,4 +123,20 @@ function postDataToSheet() {
       continue;
     }
   }
-})();
+};
+
+fetchFlights();
+
+/* 
+cron.schedule(
+  "1 12 * * *",
+  function () {
+    console.log("scheduler is running");
+    fetchFlights();
+  },
+  {
+    timezone: "America/Sao_Paulo",
+  }
+);
+
+*/
