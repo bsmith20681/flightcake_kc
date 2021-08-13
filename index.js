@@ -4,6 +4,13 @@ const _ = require("lodash");
 const axios = require("axios");
 const destinationsCodes = require("./destination.json");
 
+/*
+const cron = require("node-cron");
+cron.schedule("* * * * *", function () {
+  console.log("scheduler is running");
+});
+*/
+
 const thisTuesday = moment()
   .startOf("isoWeek")
   .add(2, "week")
