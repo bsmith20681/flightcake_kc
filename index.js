@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 const moment = require("moment");
 const _ = require("lodash");
 const axios = require("axios");
-const destinationsCodes = require("./destination.json");
+const destinationsCodes = require("./destinations.json");
 const cron = require("node-cron");
 
 const thisTuesday = moment()
@@ -115,7 +115,7 @@ const fetchFlights = async () => {
       console.log(masterData);
       await browser.close();
 
-      if (u === 15) {
+      if (u === 47) {
         postDataToSheet();
       }
     } catch (err) {
@@ -126,12 +126,12 @@ const fetchFlights = async () => {
 };
 
 cron.schedule(
-  "1 12 * * *",
+  "1 2 * * *",
   function () {
     console.log("scheduler is running");
     fetchFlights();
   },
   {
-    timezone: "America/Sao_Paulo",
+    timezone: "America/Los_Angeles",
   }
 );
