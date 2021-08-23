@@ -2,17 +2,18 @@ const puppeteer = require("puppeteer");
 const moment = require("moment");
 const _ = require("lodash");
 const axios = require("axios");
-const destinationsCodes = require("./destinations.json");
+const { PuppeteerScreenRecorder } = require("puppeteer-screen-recorder");
+const destinationsCodes = require("./test.json");
 const cron = require("node-cron");
 
 const thisTuesday = moment()
   .startOf("isoWeek")
-  .add(2, "week")
+  .add(1, "week")
   .day("Tuesday")
   .format("MM DD");
 const nextTuesday = moment()
   .startOf("isoWeek")
-  .add(3, "week")
+  .add(2, "week")
   .day("Tuesday")
   .format("MM DD");
 
@@ -93,14 +94,25 @@ const fetchFlights = async () => {
 
         const date = await page.$eval("div.hguy9c", (e) => e.innerHTML);
 
-        await page.waitForSelector("span.YMlIz");
-        const price = await page.$eval("span.YMlIz", (e) => e.innerHTML);
-        priceGraph.push({
-          Date_pulled: todayDate,
-          Destination: destinationsCodes[u],
-          Date: date,
-          Price: parseInt(price.substring(1).replace(",", "")),
-        });
+        if ((await page.$("span.YMlIz")) == null) {
+          console.log("nothing found");
+          priceGraph.push({
+            Date_pulled: todayDate,
+            Destination: destinationsCodes[u],
+            Date: "N/A",
+            Price: 10000000,
+          });
+        } else {
+          console.log("price found");
+          await page.waitForSelector("span.YMlIz");
+          const price = await page.$eval("span.YMlIz", (e) => e.innerHTML);
+          priceGraph.push({
+            Date_pulled: todayDate,
+            Destination: destinationsCodes[u],
+            Date: date,
+            Price: parseInt(price.substring(1).replace(",", "")),
+          });
+        }
       }
 
       await page.waitForSelector("button[jsname='Oc7uMe']");
@@ -115,7 +127,7 @@ const fetchFlights = async () => {
       console.log(masterData);
       await browser.close();
 
-      if (u === 47) {
+      if (u === 129) {
         postDataToSheet();
       }
     } catch (err) {

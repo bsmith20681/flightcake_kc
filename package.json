@@ -6,6 +6,7 @@
     "node-cron": "^3.0.0",
     "puppeteer": "^2.1.0",
     "puppeteer-core": "^10.2.0",
+    "puppeteer-screen-recorder": "^1.1.11",
     "shelljs": "^0.8.4"
   },
   "name": "flightcake_kc",
