@@ -2,8 +2,7 @@ const puppeteer = require("puppeteer");
 const moment = require("moment");
 const _ = require("lodash");
 const axios = require("axios");
-const { PuppeteerScreenRecorder } = require("puppeteer-screen-recorder");
-const destinationsCodes = require("./test.json");
+const destinationsCodes = require("./destinations.json");
 const cron = require("node-cron");
 
 const thisTuesday = moment()
@@ -103,7 +102,6 @@ const fetchFlights = async () => {
             Price: 10000000,
           });
         } else {
-          console.log("price found");
           await page.waitForSelector("span.YMlIz");
           const price = await page.$eval("span.YMlIz", (e) => e.innerHTML);
           priceGraph.push({
@@ -137,6 +135,9 @@ const fetchFlights = async () => {
   }
 };
 
+fetchFlights();
+
+/*
 cron.schedule(
   "1 2 * * *",
   function () {
@@ -147,3 +148,4 @@ cron.schedule(
     timezone: "America/Los_Angeles",
   }
 );
+*/
