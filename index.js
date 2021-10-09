@@ -2,8 +2,7 @@ const puppeteer = require("puppeteer");
 const moment = require("moment");
 const _ = require("lodash");
 const axios = require("axios");
-//const destinationsCodes = require("./destinations.json");
-const destinationsCodes = require("./test.json");
+const destinationsCodes = require("./destinations.json");
 
 const cron = require("node-cron");
 
