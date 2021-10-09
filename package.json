@@ -4,7 +4,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "node-cron": "^3.0.0",
-    "puppeteer": "^2.1.0",
+    "puppeteer": "^2.1.1",
     "puppeteer-core": "^10.2.0",
     "puppeteer-screen-recorder": "^1.1.11",
     "shelljs": "^0.8.4"
@@ -27,5 +27,6 @@
   "bugs": {
     "url": "https://github.com/bsmith20681/flightcake_kc/issues"
   },
-  "homepage": "https://github.com/bsmith20681/flightcake_kc#readme"
+  "homepage": "https://github.com/bsmith20681/flightcake_kc#readme",
+  "devDependencies": {}
 }

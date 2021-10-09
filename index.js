@@ -2,7 +2,9 @@ const puppeteer = require("puppeteer");
 const moment = require("moment");
 const _ = require("lodash");
 const axios = require("axios");
-const destinationsCodes = require("./destinations.json");
+//const destinationsCodes = require("./destinations.json");
+const destinationsCodes = require("./test.json");
+
 const cron = require("node-cron");
 
 const thisTuesday = moment()
@@ -94,21 +96,24 @@ const fetchFlights = async () => {
         const date = await page.$eval("div.hguy9c", (e) => e.innerHTML);
 
         if ((await page.$("span.YMlIz")) == null) {
-          console.log("nothing found");
           priceGraph.push({
             Date_pulled: todayDate,
+            City: "NA",
             Destination: destinationsCodes[u],
             Date: "N/A",
             Price: 10000000,
+            URL: 'N/A'
           });
         } else {
           await page.waitForSelector("span.YMlIz");
           const price = await page.$eval("span.YMlIz", (e) => e.innerHTML);
           priceGraph.push({
             Date_pulled: todayDate,
+            City: await page.$eval("[aria-label='Where to?']", (e) => e.value),
             Destination: destinationsCodes[u],
             Date: date,
             Price: parseInt(price.substring(1).replace(",", "")),
+            URL: await page.url()
           });
         }
       }
